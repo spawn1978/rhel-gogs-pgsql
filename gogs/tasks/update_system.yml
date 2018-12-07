@@ -1,0 +1,5 @@
+- name: Execute yum clean all
+  shell: yum clean all
+
+- name: Update the system
+  yum: name=* state=latest

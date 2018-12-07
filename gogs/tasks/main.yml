@@ -1,0 +1,29 @@
+### ADD EPEL REPOSITORY
+- include: add_epel_repository.yml
+
+### CLEAN ALL AND UPDATE
+- include: update_system.yml
+
+### INSTALL SUPERVISOR
+- include: install_supervisor.yml
+
+### INSTALL POSTGRES
+- include: install_pgsql.yml
+
+### INSTALL GOGS
+- include: install_gogs.yml
+
+### SEND INI FILES TO THE SERVER
+- include: send_supervisor_ini_files.yml
+
+### DISABLE SELINUX
+- include: disable_selinux.yml
+
+### CHANGE FIREWALLD RULES
+- include: firewall_rules.yml
+
+- name: reboot :>
+  shell: reboot
+
+
+

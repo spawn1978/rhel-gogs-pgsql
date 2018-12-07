@@ -1,0 +1,6 @@
+- name:  Enable port 3000 on firewall (gogs).
+  firewalld:
+    port: 3000/tcp
+    permanent: true
+    state: enabled
+

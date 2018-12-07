@@ -1,0 +1,5 @@
+- selinux:
+    state: disabled
+
+- name: Send selinux file pre-configured to be disabled (to persist after rebooting)
+  template: src=templates/selinux.j2 dest=/etc/sysconfig/selinux

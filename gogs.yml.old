@@ -1,0 +1,7 @@
+---
+- hosts: gogs
+  become: yes
+  become_user: root
+  #remote_user: root
+  roles:
+  - gogs

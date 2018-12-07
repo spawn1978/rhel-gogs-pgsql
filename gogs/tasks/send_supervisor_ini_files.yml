@@ -1,0 +1,2 @@
+- name: Send gogs.ini to the server
+  template: src=templates/gogs.ini.j2 dest=/etc/supervisor/conf.d/gogs.ini

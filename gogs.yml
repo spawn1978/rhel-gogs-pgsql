@@ -1,0 +1,7 @@
+---
+- hosts: gogs
+  become: yes
+  become_user: root
+  become_method: su
+  roles:
+  - gogs

@@ -1,0 +1,29 @@
+- name: download pgdg-centos96-9.6-3.noarch.rpm
+  get_url:
+    url: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-latest-x86_64/pgdg-centos96-9.6-3.noarch.rpm    
+    dest: /tmp/
+    mode: 0440
+
+- name: Install postgresql repo.
+  shell: yum install pgdg-centos96-9.6-3.noarch.rpm -y chdir=/tmp
+
+- name: Install Postgresql
+  yum: name={{ item }} state=present
+  with_items:
+  - postgresql96-server
+  - postgresql96-contrib
+
+- name: Create new cluster
+  command: /usr/pgsql-9.6/bin/postgresql96-setup initdb
+
+- name: Load pg_hba.conf file
+  template: src=pg_hba.conf.j2 dest=/var/lib/pgsql/9.6/data/pg_hba.conf 
+
+- name: Load pg_hba.conf file
+  template: src=postgresql.conf.j2 dest=/var/lib/pgsql/9.6/data/postgresql.conf 
+
+- name: Enable postgresql to start on boot.
+  service: name=postgresql-9.6.service enabled=yes 
+
+- name: Start postgresql.service
+  service: name=postgresql-9.6.service state=started

@@ -1,0 +1,9 @@
+[program:gogs]
+command=/root/gogs/gogs web 
+directory=/root/gogs
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/gogs.err.log
+stdout_logfile=/var/log/gogs.out.log
+numprocs=1
+process_name=%(program_name)s_%(process_num)02d
